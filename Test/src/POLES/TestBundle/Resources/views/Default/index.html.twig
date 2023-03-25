@@ -1,0 +1,10 @@
+Hello World!
+{% for message in app.session.flashbag.get('success') %}
+{{ message }}<br>
+{% endfor %}
+
+{% for message in app.session.flashbag.get('errors') %}
+{{ message }}<br>
+{% endfor %}
+
+<h2>Bonjour je suis sur la page d'accueil</h2>
