@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row p-5">
+        <div class="col-12">
+            <h1>{{ produit.titre }}</h1>
+        </div>
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="{{ asset('photo/' ~ produit.photo)}}" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3>{{ produit.titre }}</h3>
+            <p>{{ produit.description }}</p>
+            <h3>Détails</h3>
+            <ul>
+                <li>Catégorie : {{ produit.categorie }}</li>
+                <li>Couleur : {{ produit.couleur }}</li>
+                <li>Taille : {{ produit.taille }}</li>
+            </ul>
+            <h4>Prix : {{ produit.prix | number_format('2', ',', ' ') }} €</h4>
+
+            <form method="post" action="panier.php">
+				<input type="hidden" name="id_produit" value="3">
+				<select name="quantite" class="custom-select col-sm-2">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+				<input type="submit" name="ajout_panier" value="ajouter au panier" class="btn col-sm-8 ml-2">
+			</form>
+			<p>Nombre de produit(s) disponible(s) : 70 </p>
+            <p>
+                <a href="{{ path('categorie', { 'cat' : produit.categorie })}}">Retour vers la catégorie <strong>{{ produit.categorie }}</strong></a>
+            </p>
+        </div>
+    </div><!-- .row -->
+{% endblock %}

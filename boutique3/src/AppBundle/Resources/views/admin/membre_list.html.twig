@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	{% for message in app.session.flashbag.get('success') %}
+		<div class="alert alert-success alert-dismissible fade show">{{ message }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	{% endfor %}
+
+    Je suis dans la page qui liste les membres en admin
+{% endblock %}

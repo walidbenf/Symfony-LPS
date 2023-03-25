@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+   
+	<h1>Ajouter un produit</h1>
+	
+	{{ form_start(produitForm) }}
+		
+		<div class="form-group">
+		{{ form_label(produitForm.reference) }}<br/>
+		{{ form_widget(produitForm.reference) }}
+		</div>
+		
+		<div class="form-group">
+		{{ form_errors(produitForm.categorie) }}
+		{{ form_widget(produitForm.categorie, {
+			'attr': {
+				'placeholder': 'categorie',
+				'class': 'form-control'
+				}
+		}) }}
+		</div>
+		
+		<div class="form-group">
+		{{ form_row(produitForm.taille) }}
+		</div>
+		
+		
+	{{ form_end(produitForm) }}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+{% endblock %}

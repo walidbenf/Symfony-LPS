@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	{% for message in app.session.flashbag.get('success') %}
+		<div class="alert alert-success alert-dismissible fade show">{{ message }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	{% endfor %}
+	<div>
+		<a href="{{ path('produit_add') }}" class="m-2 btn btn-primary"><i class="fas fa-plus"></i>&nbsp; Ajouter un produit</a>
+	</div>
+	<table class="table dark-table" >
+		<thead>
+			<tr>
+				<th>Photo</th>
+				<th>Id du produit</th>
+				<th>Titre</th>
+				<th>Stock</th>
+				<th>Prix</th>
+				<th>Sexe</th>
+				<th>Taille</th>
+				<th colspan="3">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for pdt in produits %}
+				<tr>
+					<td><img src="{{ asset('photo/') ~ pdt.photo }}" height="80px" /></td>
+					<td>{{ pdt.id }}</td>
+					<td>{{ pdt.titre }}</td>
+					<td>{{ pdt.stock }}</td>
+					<td>{{ pdt.prix | number_format('2', ',', ' ') }}€</td>
+					<td>{{ pdt.sexe }}</td>
+					<td>{{ pdt.taille }}</td>
+
+
+<td><a href="{{ path('produit_delete', {'id' : pdt.id}) }}" onclick="return confirm('êtes-vous certain de vouloir supprimer le produit {{ pdt.id }}')"><i class="fas fa-trash"></i></a></td>
+
+<td><a href="{{ path('produit_update', { 'id' : pdt.id }) }}"><i class="fas fa-edit"></i></a></td>
+
+<td><a target="_blank" href="{{ path('produit', {'id' : pdt.id}) }}"><i class="fas fa-eye"></i></a></td>
+
+
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+
+{% endblock %}

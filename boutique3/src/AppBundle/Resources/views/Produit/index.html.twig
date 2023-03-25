@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+	<div class="row p-5">
+        <div class="col-md-3">
+			<div class="list-group mb-4">
+				<a href="{{ path('homepage') }}" class="list-group-item">Tous les produits</a>
+
+
+				{% for cat in categories %}
+				<a href="{{ path('categorie', {'cat' : cat.categorie})}}" class="list-group-item">{{ cat.categorie }}</a>
+				{% endfor %}
+
+
+			</div>
+		</div>
+        <div class="col-md-9">
+			<h1>Accueil</h1>
+            <div class="row">
+
+
+				{% for pdt in produits %}
+				<!-- debut vignette produit -->
+				<div class="col-sm-4 mb-4">
+					<div class="card">
+						<a href="{{ path('produit', {'id' : pdt.id}) }}">
+							<img src="{{ asset('photo/') ~pdt.photo }}" alt="pantalon blanc" class="card-img-top">
+                        </a>
+						<div class="card-body">
+						<h4>{{ pdt.titre }}</h4>
+						<h5>{{ pdt.prix  | number_format('2', ',', ' ') }} €</h5>
+						<p>{{ pdt.description | slice(0, 40) }}</p>
+						</div>
+					</div>
+				</div>
+				<!-- fin vignette produit -->
+				{% endfor %}
+
+
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

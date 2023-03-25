@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+   
+	<title>Ma Boutique - {% block title %}{% endblock %}</title>
+
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <!-- La marque -->
+        <a class="navbar-brand" href="{{ path('homepage')}}">MA BOUTIQUE</a>
+       
+        <!-- Le burger -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        
+        <!-- Le menu -->
+        <div class="collapse navbar-collapse" id="nav1">
+			<ul class="navbar-nav ml-auto">
+				<li><a class="nav-link" href="{{ path('homepage') }}">Boutique</a></li>
+				<li><a class="nav-link" href="{{ path('inscription') }}">Inscription</a></li>
+				<li><a class="nav-link" href="{{ path('connexion') }}">Connexion</a></li>
+				<li><a class="nav-link" href="{{ path('profil') }}">Profil</a></li>
+				<li><a class="nav-link" href="">Panier</a></li>        	
+				<li class="dropdown">	
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Admin
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li><a class="dropdown-item" href="{{ path('produit_list') }}">Gestion Produit</a></li>
+						<li><a class="dropdown-item" href="{{ path('membre_list') }}">Gestion Membre</a></li>
+						<li><a class="dropdown-item" href="{{ path('commande_list') }}">Gestion Commande</a></li>
+					</ul>
+				</li>        	
+			</ul>
+        </div>
+      </div>
+    </nav>
+
+   
+    <!-- Page Content -->
+    <div class="container" style="min-height: 80vh;">
+        <div class="row">
+          <div class="col-12">
+             <!-- ici le contenu spécifique de chaque page --> 
+            
+			
+				{# Ceci est un commentaire Twig #}
+				{% block content %}
+				{% endblock %}
+
+
+
+
+          </div><!-- .col-12  -->
+        </div><!-- .row -->
+    </div><!-- .container -->     
+
+    <!-- footer -->
+    <div class="container">
+        <hr>
+        <footer>
+            <div class="row text-center">
+              <div class="col">
+                <p>Copyright &copy; Ma Boutique - 2018</p>
+              </div>
+            </div>
+        </footer>
+    </div><!-- .container -->     
+
+</body>
+</html>    
